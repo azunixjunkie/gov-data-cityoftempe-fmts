@@ -1,0 +1,104 @@
+-- City of Tempe, General_Offenses Create Table stmt, CSV import, and whitespace cleanup
+CREATE TABLE tempegov_gen_offenses (
+	X VARCHAR(255) DEFAULT NULL
+	,Y VARCHAR(255) DEFAULT NULL
+	,OBJECTID VARCHAR(100) DEFAULT NULL
+	,primary_key VARCHAR(50) DEFAULT NULL
+	,occ_dt VARCHAR(255) DEFAULT NULL
+	,obfAddress VARCHAR(255) DEFAULT NULL
+	,x_rand VARCHAR(255) DEFAULT NULL
+	,y_rand VARCHAR(255) DEFAULT NULL
+	,disclaimer VARCHAR(255) DEFAULT NULL
+	,place_name VARCHAR(255) DEFAULT NULL
+	,OffenseCustom VARCHAR(255) DEFAULT NULL
+	,locationTranslation VARCHAR(255) DEFAULT NULL
+	,Latitude VARCHAR(255) DEFAULT NULL
+	,Longitude VARCHAR(255) DEFAULT NULL
+)
+LOAD DATA INFILE '/tmp/tempegov_gen_offenses.csv'
+REPLACE INTO TABLE tempegov_gen_offenses
+FIELDS TERMINATED BY ','
+IGNORE 1 LINES;
+
+-- add an id column, good practice in mysql/mariadb
+alter table tempegov_gen_offenses add column id int not null primary key auto_increment;
+
+UPDATE `tempegov_gen_offenses` SET `X` = TRIM(`X`);
+UPDATE `tempegov_gen_offenses` SET `Y` = TRIM(`Y`);
+UPDATE `tempegov_gen_offenses` SET `OBJECTID` = TRIM(`OBJECTID`);
+UPDATE `tempegov_gen_offenses` SET `primary_key` = TRIM(`primary_key`);
+UPDATE `tempegov_gen_offenses` SET `occ_dt` = TRIM(`occ_dt`);
+UPDATE `tempegov_gen_offenses` SET `obfAddress` = TRIM(`obfAddress`);
+UPDATE `tempegov_gen_offenses` SET `x_rand` = TRIM(`x_rand`);
+UPDATE `tempegov_gen_offenses` SET `y_rand` = TRIM(`y_rand`);
+UPDATE `tempegov_gen_offenses` SET `OffenseCustom` = TRIM(`OffenseCustom`);
+UPDATE `tempegov_gen_offenses` SET `locationTranslation` = TRIM(`locationTranslation`);
+UPDATE `tempegov_gen_offenses` SET `place_name` = TRIM(`place_name`);
+UPDATE `tempegov_gen_offenses` SET `CFSType` = TRIM(`CFSType`);
+UPDATE `tempegov_gen_offenses` SET `Latitude` = TRIM(`Latitude`);
+UPDATE `tempegov_gen_offenses` SET `Longitude` = TRIM(`Longitude`);
+
+
+-- City of Tempe, Calls_for_Service Create Table stmt, CSV import, and whitespace cleanup
+CREATE TABLE tempegov_calls_for_service (
+	X VARCHAR(255) DEFAULT NULL
+	,Y VARCHAR(255) DEFAULT NULL
+	,OBJECTID VARCHAR(100) DEFAULT NULL
+	,primary_key VARCHAR(50) DEFAULT NULL
+	,final_case_type VARCHAR(255) DEFAULT NULL
+	,occ_year VARCHAR(255) DEFAULT NULL
+	,occ_dt VARCHAR(255) DEFAULT NULL
+	,obfAddress VARCHAR(255) DEFAULT NULL
+	,priority VARCHAR(255) DEFAULT NULL
+	,zone VARCHAR(255) DEFAULT NULL
+	,grid VARCHAR(255) DEFAULT NULL
+	,how_received VARCHAR(255) DEFAULT NULL
+	,unit_id1 VARCHAR(255) DEFAULT NULL
+	,unit_id2 VARCHAR(255) DEFAULT NULL
+	,unit_id3 VARCHAR(255) DEFAULT NULL
+	,report_flag VARCHAR(255) DEFAULT NULL
+	,case_status VARCHAR(255) DEFAULT NULL
+	,cleared_by VARCHAR(255) DEFAULT NULL
+	,x_rand VARCHAR(255) DEFAULT NULL
+	,y_rand VARCHAR(255) DEFAULT NULL
+	,disclaimer VARCHAR(255) DEFAULT NULL
+	,place_name VARCHAR(255) DEFAULT NULL
+	,CFSType VARCHAR(255) DEFAULT NULL
+	,Latitude VARCHAR(255) DEFAULT NULL
+	,Longitude VARCHAR(255) DEFAULT NULL
+)
+
+
+LOAD DATA INFILE '/tmp/tempegov_calls_for_service.csv'
+REPLACE INTO TABLE tempegov_calls_for_service
+FIELDS TERMINATED BY ','
+IGNORE 1 LINES;
+
+-- add an id column, good practice in mysql/mariadb
+alter table tempegov_calls_for_service add column id int not null primary key auto_increment;
+
+UPDATE `tempegov_calls_for_service` SET `X` = TRIM(`X`);
+UPDATE `tempegov_calls_for_service` SET `Y` = TRIM(`Y`);
+UPDATE `tempegov_calls_for_service` SET `OBJECTID` = TRIM(`OBJECTID`);
+UPDATE `tempegov_calls_for_service` SET `primary_key` = TRIM(`primary_key`);
+UPDATE `tempegov_calls_for_service` SET `final_case_type` = TRIM(`final_case_type`);
+UPDATE `tempegov_calls_for_service` SET `occ_year` = TRIM(`occ_year`);
+UPDATE `tempegov_calls_for_service` SET `occ_dt` = TRIM(`occ_dt`);
+UPDATE `tempegov_calls_for_service` SET `obfAddress` = TRIM(`obfAddress`);
+UPDATE `tempegov_calls_for_service` SET `priority` = TRIM(`priority`);
+UPDATE `tempegov_calls_for_service` SET `zone` = TRIM(`zone`);
+UPDATE `tempegov_calls_for_service` SET `grid` = TRIM(`grid`);
+UPDATE `tempegov_calls_for_service` SET `how_received` = TRIM(`how_received`);
+UPDATE `tempegov_calls_for_service` SET `unit_id1` = TRIM(`unit_id1`);
+UPDATE `tempegov_calls_for_service` SET `unit_id2` = TRIM(`unit_id2`);
+UPDATE `tempegov_calls_for_service` SET `unit_id3` = TRIM(`unit_id3`);
+UPDATE `tempegov_calls_for_service` SET `report_flag` = TRIM(`report_flag`);
+UPDATE `tempegov_calls_for_service` SET `case_status` = TRIM(`case_status`);
+UPDATE `tempegov_calls_for_service` SET `cleared_by` = TRIM(`cleared_by`);
+UPDATE `tempegov_calls_for_service` SET `x_rand` = TRIM(`x_rand`);
+UPDATE `tempegov_calls_for_service` SET `y_rand` = TRIM(`y_rand`);
+UPDATE `tempegov_calls_for_service` SET `disclaimer` = TRIM(`disclaimer`);
+UPDATE `tempegov_calls_for_service` SET `place_name` = TRIM(`place_name`);
+UPDATE `tempegov_calls_for_service` SET `CFSType` = TRIM(`CFSType`);
+UPDATE `tempegov_calls_for_service` SET `Latitude` = TRIM(`Latitude`);
+UPDATE `tempegov_calls_for_service` SET `Longitude` = TRIM(`Longitude`);
